@@ -1,0 +1,10 @@
+<%= form_for(@micropost) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div class="field">
+    <%= f.text_area :title, class: "smalltextarea", placeholder: "Enter post title..." %>
+    <%= f.text_area :topic, class: "smalltextarea", placeholder: "Enter post topic..." %>
+    <%= f.text_area :content, class: "customtextarea", placeholder: "Compose new post..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

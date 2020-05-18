@@ -1,0 +1,37 @@
+orange:
+  content: "I just ate an orange"
+  topic: "1"
+  title: "Today"
+  created_at: <%= 10.minutes.ago %>
+  user: michael
+
+tau_manifesto:
+  content: "Check out the @tauday site by @mhartl: google.com"
+  topic: "2"
+  title: "Web"
+  created_at: <%= 3.years.ago %>
+  user: michael
+
+
+cat_video:
+  content: "Sad cats are sad: cat.com"
+  topic: "3"
+  title: "Cats"
+  created_at: <%= 2.hours.ago %>
+  user: archer
+
+most_recent:
+  content: "Writing a short test"
+  topic: "3"
+  title: "Test"
+  created_at: <%= Time.zone.now %>
+  user: michael
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  topic: <%= n %>
+  title: "Cats"
+  created_at: <%= 42.days.ago %>
+  user: michael
+<% end %>
