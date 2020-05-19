@@ -4,7 +4,7 @@
 <% end %>
 
 
-<%= form_for(:static_pages, url: home_path) do |f| %>
+<%= form_for :static_pages, url: home_path, :html => {:id => "filter_form"} do |f| %>
     <div data-toggle="buttons" >
 
         <label class="btn btn-info col-sm-3">
