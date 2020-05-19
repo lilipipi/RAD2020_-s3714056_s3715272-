@@ -1,0 +1,8 @@
+<div class="card">
+<% @most_viewed_posts.each do |post| %>
+<ol class="microposts">
+    <li style="padding-left: 20px; padding-right: 50px; padding-top: 10px;"><%= link_to post.title, post %></li>
+    <small><i class="glyphicon glyphicon-eye-open" style="float: right; padding-right: 20px;">  <%= post.view %></i></small>
+</ol>
+<%end%>
+</div>

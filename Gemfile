@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker', '1.7.3'
 gem 'will_paginate', '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'simple_form'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

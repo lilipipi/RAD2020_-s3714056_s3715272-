@@ -1,16 +1,17 @@
 <% provide(:title, "Home") %>
   <div class="row">
 
-    <div class="col-md-8">
+  <br/>
+  <br/>
+
+    <div class="col-md-8" style="padding-top: 50px;">
+      <%= render 'shared/secondary_navbar' %>
+      <%= link_to "New Post", new_micropost_path %>
       <h3>Micropost feed</h3>
       <%= render 'shared/recent_posts' %>
     </div>
 
-    <div class="col-md-4">
-      
-      <br/>
-      <br/>
-
+    <div class="col-md-4" style="padding-top: 50px;">
       <div class="side-bar">
         <div class="card">
           <div class="card-body">

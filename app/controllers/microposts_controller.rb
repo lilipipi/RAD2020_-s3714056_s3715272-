@@ -1,15 +1,20 @@
 class MicropostsController < ApplicationController
-    before_action :logged_in_user, only: [:create, :destroy]
+    before_action :logged_in_user, only: [:create, :destroy, :new]
     before_action :correct_user, only: :destroy
 
     
-
+    $topic = Micropost.order('created_at DESC').pluck(:topic).uniq
     def show
         @micropost = Micropost.find(params[:id])
         @user = @micropost.user
         @views = @micropost.view
         @views +=1
         @micropost.update(view: @views)
+    end
+
+    def new        
+        @user = current_user
+        @micropost = current_user.microposts.build       
     end
     
     def create
