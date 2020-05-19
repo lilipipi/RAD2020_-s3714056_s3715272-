@@ -1,29 +1,47 @@
 <% provide(:title, "Home") %>
-
-<% if logged_in? %>
   <div class="row">
-    <aside class="col-md-4">
 
-      <section class="user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-      
-      <section class="micropost_form">
-        <%= render 'shared/micropost_form' %>
-      </section>
-      
-    </aside>
-    <div class="col-md-8">
-      <h3>Micropost feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
-  </div>
-
-<% else %>
-  <div class="row">
     <div class="col-md-8">
       <h3>Micropost feed</h3>
       <%= render 'shared/recent_posts' %>
     </div>
+
+    <div class="col-md-4">
+      
+      <br/>
+      <br/>
+
+      <div class="side-bar">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="session-title"> Recent Members </h4>
+
+            <div style="padding: 15px 15px 15px 15px">
+              <% @user_ids.each do |user_id| %>
+              <% user = User.find_by(id: user_id) %>
+                <div class="col-sm-4">
+                  <%= link_to gravatar_for(user, size: 120), user %> 
+                  <p style="text-align: center;"><%= link_to user.name, user %></p>
+                </div>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+
+        <br/>
+
+        <div class="card">
+          <div class="card-body">
+            <h4 class="session-title"> Topic </h4>
+
+            <div style="padding: 15px 15px 15px 15px">
+              <%= render 'shared/micropost_filter_form' %>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
-<% end %>

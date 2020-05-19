@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+    @micropost = current_user.microposts.build
     # @microposts = @user.microposts.where(created_at: (Time.now.midnight - 30.day)..(Time.now.midnight + 1.day)).paginate(page: params[:page])
   end
 

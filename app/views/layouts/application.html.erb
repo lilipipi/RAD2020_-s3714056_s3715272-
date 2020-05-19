@@ -7,7 +7,7 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div class="customized-container">
+    <div class="customized-container customized-g migracontainer">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>

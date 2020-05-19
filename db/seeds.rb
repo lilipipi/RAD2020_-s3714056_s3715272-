@@ -14,7 +14,7 @@ end
 users = User.order(:created_at).take(6)
 50.times do
     content = Faker::Lorem.sentence(5)
-    users.each { |user| user.microposts.create!(content: content, topic: "topic", title: "title") }
+    users.each { |user| user.microposts.create!(content: content, topic: "topic", title: "title",view: 0) }
 end
 
 users = User.order(:created_at).take(6)
