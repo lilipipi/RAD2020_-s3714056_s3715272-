@@ -53,6 +53,11 @@ p {
   line-height: 1.7em;
 }
 
+.customized-container {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 
 /* header */
 
@@ -74,27 +79,15 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
   color: $gray-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
 }
 
 @mixin box_sizing {
