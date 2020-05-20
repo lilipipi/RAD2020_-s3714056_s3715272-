@@ -6,6 +6,17 @@
 $gray-medium-light: #eaeaea;
 
 /* universal */
+.post-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.post-corner{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
 
 body {
   padding-top: 60px;
@@ -278,7 +289,8 @@ span.picture {
   flex-direction: column;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 15px;
+  margin-top: 15px;
 }
 
 .session-title {
