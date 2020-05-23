@@ -1,0 +1,28 @@
+  <%= simple_form_for @micropost do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+    <div> 
+      <div>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.input_field :title, class: "form-control", wrapper: false, label_html: { class: 'label' }  %>  
+        </div>
+
+        <div class="form-group">
+          <label>Topic</label>
+          <%= f.input :topic, collection: $topic, prompt: "====Select====", input_html: {class:"custom-select my-3 mr-sm-2 form-control"}, label: false %>   
+        </div>       
+        
+        <div class="form-group">
+          <label>Post content</label>
+          <%= f.text_area :content, class: "form-control custom-micropost-form", placeholder: "Enter your post here ..."  %>        
+        </div>
+
+        <div>
+          <%= f.button :submit, 'Create new post', class: "btn btn-primary col-md-2" %>
+          <%= link_to "Cancel", :back, {class: "btn btn-default col-md-2", style: "margin-left: 10px;"} %>
+        </div>
+      </div>
+
+    </div>     
+
+  <% end %>

@@ -23,10 +23,11 @@
     </div>
 <% end %>
 
-<%= form_for :static_pages, url: "/home" do |f| %>
+<% if false %>
+<%= simple_form_for :static_pages, url: filter_path do %>
 
-    <%= f.label :topic %>
-    <%= f.text_field :topic, class: 'form-control'%>
+    <%= text_field :myform, :topic %>
 
-    <%= f.submit 'sign up', class: "btn btn-primary" %>
+    <%= submit_tag 'sign up', class: "btn btn-primary" %>
+<% end %>
 <% end %>

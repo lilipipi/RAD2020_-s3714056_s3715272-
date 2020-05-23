@@ -26,7 +26,6 @@ class MicropostsController < ApplicationController
         else
             @recent_posts = Micropost.where(created_at: (Time.now.midnight - 30.day)..(Time.now.midnight + 1.day)).paginate(page: params[:page])
             @feed_items = current_user.feed.paginate(page: params[:page])
-            flash[:danger] = "Failed to create micropost!"
             render 'microposts/new'
         end
         @micropost.update(view: 0)

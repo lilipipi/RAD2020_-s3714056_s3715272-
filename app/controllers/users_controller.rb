@@ -4,10 +4,10 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id])    
     @microposts = @user.microposts.paginate(page: params[:page])
     @micropost = current_user.microposts.build
-    # @microposts = @user.microposts.where(created_at: (Time.now.midnight - 30.day)..(Time.now.midnight + 1.day)).paginate(page: params[:page])
+    @comments = @user.comments
   end
 
   def index
@@ -48,6 +48,26 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:sucess] = "User deleted"
     redirect_to users_url
+  end
+
+  def my_comments
+    @posts = current_user.microposts
+    @my_comment = []
+
+    if @posts.any?
+      @comments = @posts.first.comments
+      @posts.each do |post|
+        if post.comments.any?
+          @comments.push(post.comments)
+        end
+      end
+
+      @comments.each do |comment|
+        if comment.user_id != current_user.id
+          @my_comment.push(comment)
+        end
+      end
+    end
   end
 
   private

@@ -25,7 +25,13 @@ class StaticPagesController < ApplicationController
       @test = (params[:topic])
     end
     render 'static_pages/home'
-    @test = params[:topic]
+  end
+
+  def filter2
+    @user_ids = Micropost.order('created_at DESC').pluck(:user_id).uniq
+    @most_viewed_posts = Micropost.order('view DESC').take(5)
+    @recent_posts = Micropost.where(topic: params['myform']['topic']).order('created_at DESC').paginate(page: params[:page])
+    render 'static_pages/home'
   end
 
   def help

@@ -419,14 +419,23 @@ span.picture {
 
 .topnav input[type=text] {
   all:  unset;
-  float: right;
+  float: left;
   padding: 6px;
   border: none;
   margin-top: 8px;
-  margin-right: 16px;
   font-size: 14px;
   background-color: white;
-  border-radius: 15px;
+}
+
+
+.topnav .search-container button {
+  float: left;
+  padding: 6px 10px;
+  margin-top: 8px;
+  background: #ddd;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
 }
 
 .navbar-gravatar {
@@ -452,27 +461,13 @@ span.picture {
   float:left;
 }
 
-#ck-button:hover {
-  background:red;
+.custom-micropost-form {
+  height: 200px !important;
 }
 
-#ck-button label {
-  float:left;
-  width:4.0em;
-}
-
-#ck-button label span {
-  text-align:center;
-  padding:3px 0px;
-  display:block;
-}
-
-#ck-button label input {
-  position:absolute;
-  top:-20px;
-}
-
-#ck-button input:checked + span {
-  background-color:#911;
-  color:#fff;
+.micropost-title {
+  border-left: 5px solid #24a0ed;
+  background-color: whitesmoke;
+  padding: 5px 30px 5px;
+  margin-bottom: 0.75rem;
 }
