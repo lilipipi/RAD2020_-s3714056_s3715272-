@@ -22,3 +22,11 @@
     <div class="row customized-container-search" style="padding-top: 50px">
     </div>
 <% end %>
+
+<%= form_for :static_pages, url: "/home" do |f| %>
+
+    <%= f.label :topic %>
+    <%= f.text_field :topic, class: 'form-control'%>
+
+    <%= f.submit 'sign up', class: "btn btn-primary" %>
+<% end %>

@@ -12,6 +12,7 @@ class StaticPagesController < ApplicationController
       @micropost = current_user.microposts.build
       @feed_items = current_user.feed.paginate(page: params[:page])
     end
+    render 'static_pages/home'
   end
 
   def filter
@@ -21,8 +22,10 @@ class StaticPagesController < ApplicationController
       @recent_posts = Micropost.where(created_at: (Time.now.midnight - 30.day)..(Time.now.midnight + 1.day)).order('created_at DESC').paginate(page: params[:page])
     else
       @recent_posts = Micropost.where(topic: params[:topic]).order('created_at DESC').paginate(page: params[:page])
+      @test = (params[:topic])
     end
     render 'static_pages/home'
+    @test = params[:topic]
   end
 
   def help

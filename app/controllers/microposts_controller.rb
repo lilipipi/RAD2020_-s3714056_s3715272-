@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-    before_action :logged_in_user, only: [:create, :destroy, :new]
+    before_action :logged_in_user, only: [:show,:create, :destroy, :new]
     before_action :correct_user, only: :destroy
 
     
@@ -21,11 +21,13 @@ class MicropostsController < ApplicationController
         @micropost = current_user.microposts.build(micropost_params)
         if @micropost.save
             flash[:success] = "Micropost created!"
-            redirect_to root_url
+            render 'microposts/new'
+            # redirect_to root_url
         else
             @recent_posts = Micropost.where(created_at: (Time.now.midnight - 30.day)..(Time.now.midnight + 1.day)).paginate(page: params[:page])
             @feed_items = current_user.feed.paginate(page: params[:page])
-            render 'static_pages/home'
+            flash[:danger] = "Failed to create micropost!"
+            render 'microposts/new'
         end
         @micropost.update(view: 0)
     end

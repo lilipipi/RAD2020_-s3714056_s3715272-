@@ -5,11 +5,10 @@
         <div class="control">
           <%= f.label :title %>
           <%= f.input_field :title, input_html: { class: 'textarea' }, wrapper: false, label_html: { class: 'label' }  %>    
-          <%= f.input :topic, collection: $topic, prompt:"Topic",input_html: {class:'custom-select my-3 mr-sm-2 '}, label: false%>          
-          <%= f.text_area :content, placeholder: "Enter your content"  %>          
+          <%= f.input :topic, collection: $topic, prompt: "Topic", input_html: {class:'custom-select my-3 mr-sm-2 '}, label: false %>          
+          <%= f.text_area :content, placeholder: "Enter your content"  %>        
         </div>
       </div>     
-       
       <%= f.button :submit, 'Create new post', class: "btn btn-primary my-3" %>
-    <% end %>\
+    <% end %>
     </div>  

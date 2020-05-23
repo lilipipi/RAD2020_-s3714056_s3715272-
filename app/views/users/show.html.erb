@@ -22,4 +22,8 @@
       </ol>
       <%= will_paginate @microposts %>
     <% end %>
+    <div class="comments">
+      <%= render partial: "comments/comments", locals: {commentable: @user} %>
+
+    </div>
 </div>

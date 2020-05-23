@@ -19,7 +19,14 @@ Rails.application.routes.draw do
   get '/microposts', to: 'static_pages#home'
   
   
-  resources :users
+  resources :users do
+    resources :comments, module: :users
+  end
   resources :microposts, only: [:create, :destroy, :show, :new]
+  resources :microposts do
+    resources :comments, module: :microposts
+  end
+  resources :comments 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
