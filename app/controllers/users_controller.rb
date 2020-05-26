@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])    
     @microposts = @user.microposts.paginate(page: params[:page])
-    @comments = @user.comments
+    @comments = Comment.where(user_id: @user.id)
   end
 
   def index

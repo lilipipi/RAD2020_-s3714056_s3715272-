@@ -34,7 +34,7 @@
           <% if @comments.any? %>
           <% @comments.each do |comment| %>
           <p class="card-text">
-            <% if User.find(comment.commentable_id).avatar? %>
+            <% if User.find(comment.user_id).avatar? %>
             <%= link_to image_tag(User.find(comment.user_id).avatar.url), User.find(comment.user_id) %>
             <% else %>
             <%= link_to gravatar_for(User.find(comment.user_id), size: 50), User.find(comment.user_id) %>
