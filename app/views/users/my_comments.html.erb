@@ -7,9 +7,7 @@
             <div class="row">
                 <p style="margin-left:30px;"> Joined at: <%= current_user.created_at %></p>
                 <p class="ml-5 mb-4"><i class="fa fa-map-marker"></i> Melbourne</p>
-                <!-- <section class="stats">
- <%= render 'shared/stats' %>
- </section> -->
+                
             </div>
         </div>
     </div>
@@ -20,11 +18,15 @@
                     <h6>Comments to me</h6>
                 </div>
                 <div class="card-body">
-                    <% if @comments_to_user.any? %>
-                    <% @comments_to_user.each do |comment| %>
+                    <% if @my_comments.any? %>
+                    <% @my_comments.each do |comment| %>
                     <p class="card-text">
+                        <% if User.find(comment.user_id).avatar? %>
+                        <%= link_to image_tag(User.find(comment.user_id).avatar.url), User.find(comment.user_id) %>
+                        <% else %>
                         <%= link_to gravatar_for(User.find(comment.user_id), size: 50), User.find(comment.user_id) %>
-
+                        <%end%>
+                        
                         <%= User.find(comment.user_id).name %> :
                         <%= comment.body %>
                         <br>

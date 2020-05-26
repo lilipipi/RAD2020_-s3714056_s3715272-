@@ -1,51 +1,52 @@
 <% provide(:title, @user.name) %>
 <div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-4 ">
-      <img style="margin: 60px;"><%= gravatar_for @user%> </img>
-      <p style="margin-left: 150px; margin-top: 25px;"><%= @user.name %></p>
-      <div class="row">
-        <p style="margin-left:30px;"> Joined: 10/10/2020</p>
-        <p class="ml-5 mb-4"><i class="fa fa-map-marker"></i> Melbourne</p>
-
-      </div>
+  <div class="row">
+    <div class="col-4">
+    <!-- <%= gravatar_for @user%>  -->
+        <p class="text-center" style="margin-top: 30px;"><%= @user.name %></p>
+        <p class="text-center"> Joined: 10/10/2020</p>
+        <p class="text-center">Melbourne</p>
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="card-header">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
           <h6>Posts</h6>
         </div>
-        <div class="card-body">
+        <div class="panel-body">
           <% if @microposts.any? %>
           <% @microposts.each do |post| %>
-          <p class="card-text"><%= link_to post.title, post %></p>
+          <p class="panel-text"><%= link_to post.title, post %></p>
           <% end %>
           <% else %>
-          <p class="card-text">User haven't created any post</p>
+          <p class="panel-text">User haven't created any post</p>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-header">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
           <h6>Comments</h6>
         </div>
-        <div class="card-body">
+        <div class="panel-body">
           <% if @comments.any? %>
           <% @comments.each do |comment| %>
           <p class="card-text">
-            <%= link_to gravatar_for(User.find(comment.commentable_id), size: 50), User.find(comment.commentable_id) %>
-            <%= User.find(comment.commentable_id).name %> :
+            <% if User.find(comment.commentable_id).avatar? %>
+            <%= link_to image_tag(User.find(comment.user_id).avatar.url), User.find(comment.user_id) %>
+            <% else %>
+            <%= link_to gravatar_for(User.find(comment.user_id), size: 50), User.find(comment.user_id) %>
+            <% end %>
+            <%= User.find(comment.user_id).name %> :
             <%= comment.body %> <br>
             <span><%= comment.created_at %></span>
           </p>
 
           <% end %>
           <% else %>
-          <p class="card-text">There is no comments from <%= @user.name %></p>
+          <p class="panel-text">There is no comments from <%= @user.name %></p>
           <% end %>
         </div>
       </div>

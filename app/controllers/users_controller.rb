@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]  
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :my_comments]  
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   def my_comments
     @posts = current_user.microposts
-    @my_comment = []
+    @my_comments = []
 
     if @posts.any?
       @comments = @posts.first.comments
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
 
       @comments.each do |comment|
         if comment.user_id != current_user.id
-          @my_comment.push(comment)
+          @my_comments.push(comment)
         end
       end
     end
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
   private
     
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation,:avatar, :card)
     end
 
     # Confirms the correct user.

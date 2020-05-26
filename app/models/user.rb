@@ -3,6 +3,11 @@ class User < ApplicationRecord
     has_many :microposts, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
     before_save{self.email=email.downcase}
+
+    mount_uploader :avatar, PhotoUploader
+    mount_uploader :card, PhotoUploader
+    validate :avatar_size
+    validate :card_size
     validates :name, presence: true, length: { maximum: 50}
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255},
@@ -38,4 +43,18 @@ class User < ApplicationRecord
     def feed
         Micropost.where("user_id = ?", id)
     end
+
+    private
+
+        def card_size
+            if card.size > 5.megabytes
+                errors.add(:card, "should be less than 5mb")
+            end
+        end
+
+        def avatar_size
+            if avatar.size > 5.megabytes
+                errors.add(:avatar, "should be less than 5mb")
+            end
+        end    
 end

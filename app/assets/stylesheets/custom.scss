@@ -5,6 +5,12 @@
 
 $gray-medium-light: #eaeaea;
 
+#sidebar{
+  a {
+    color: #9d9d9d;
+  };
+ 
+}
 /* universal */
 .post-info{
   display: flex;
@@ -408,9 +414,9 @@ span.picture {
   color: darkorange;
 }
 
-.active {
-  background-color: rgb(28, 21, 90) !important;
-}
+// .active {
+//   background-color: rgb(28, 21, 90) !important;
+// }
 
 .topnav .newpost {
   background-color: rgb(38, 143, 85);

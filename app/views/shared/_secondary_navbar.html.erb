@@ -1,8 +1,11 @@
-
+<div class="panel">
 <div class="tab topnav" style="padding-left: 0px;">
     <%= link_to "Recent posts", root_path, class: "tablinks"%>
     <%= link_to "Selected posts", "", :onclick => "$(filter_form).submit()"%>
     <%= link_to "New Post", new_micropost_path, class: "tablinks newpost", style: "float: right;" %>
+    <% if logged_in? %>
+    <%= link_to "My Settings", edit_user_path(current_user), class: "tablinks"%>
+    <% end %>
     <div class="search-container">
       <form>
         <input type="text" placeholder="Search..">
@@ -10,3 +13,4 @@
       </form>
     </div>
 </div> 
+</div>

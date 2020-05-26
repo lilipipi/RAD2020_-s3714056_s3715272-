@@ -1,20 +1,24 @@
  <% @recent_posts.each do |post| %> 
-    <div class="card "> 
-    <div class="card-body">
+    <div class="panel"> 
+    <div class="panel-body">
     <div class ="row">
     <div class ="col-md-2">
-    <div class="card-img" style="margin-left: 20px; margin-top: 20px;">
+    <div class="panel-img" style="margin-left: 20px; margin-top: 20px;">
+        <% if post.user.avatar? %>
+        <%= link_to image_tag(post.user.avatar.url), post.user %>
+        <% else %>
         <%= link_to gravatar_for(post.user, size: 70), post.user%> 
+        <% end %>
     </div>
     </div>
     <div class ="col-md-9">
-    <div class="card-title">
+    <div class="panel-title">
         <h3 class="post-title"><%= link_to post.title, post %></h3>
     </div>
-    <div class="card-text">
+    <div class="panel-text">
     <div class="post-info">
         <p class="user"><small class="text-muted"><%= link_to post.user.name, post.user %> </small></p>        
-        <p class="card-text">
+        <p class="panel-text">
         <small class="text-muted">  
             Posted <%= time_ago_in_words(post.created_at) %> ago 
         </small>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/microposts', to: 'static_pages#home'
+  get '/my_comments', to: 'users#my_comments'
   
   
   resources :users do

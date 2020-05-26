@@ -3,25 +3,31 @@
 
   <br/>
   <br/>
+ 
 
     <div class="col-md-8" style="padding-top: 50px;">
       <%= render 'shared/secondary_navbar' %>
       
       <%= render 'shared/recent_posts' %>
-    </div>
-    
+      <%= link_to "My Setting", edit_user_path(current_user), class: "btn btn-lg btn-light text-dark" if logged_in?%>
+  
+  </div>
 
     <div class="col-md-4" style="margin-top: 50px;">
       <div class="side-bar">
-        <div class="card">
-          <div class="card-body">
+        <div class="panel">
+          <div class="panel-body">
             <h4 class="session-title"> Recent Members </h4>
 
             <div style="padding: 15px 15px 15px 15px">
               <% @user_ids.each do |user_id| %>
               <% user = User.find_by(id: user_id) %>
                 <div class="col-sm-4">
+                <% if user.avatar? %>
+                  <%= link_to image_tag(user.avatar.url, size: "120"), user %>
+                <% else %>
                   <%= link_to gravatar_for(user, size: 120), user %> 
+                <% end %>
                   <p style="text-align: center;"><%= link_to user.name, user %></p>
                 </div>
               <% end %>
@@ -31,9 +37,8 @@
         </div>
 
         <br/>
-
-        <div class="card">
-          <div class="card-body">
+        <div class="panel">
+          <div class="panel-body">
             <h4 class="session-title"> Topic </h4>
 
             <div style="padding: 15px 15px 15px 15px">
