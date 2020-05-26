@@ -62,9 +62,7 @@ class UsersController < ApplicationController
       end
 
       @comments.each do |comment|
-        if comment.user_id != current_user.id
-          @my_comments.push(comment)
-        end
+        @my_comments.push(comment)
       end
     end
   end

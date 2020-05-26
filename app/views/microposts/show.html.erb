@@ -34,7 +34,7 @@
              <%= link_to "delete", @micropost, method: :delete, data: { confirm: "You sure?"} %>  
         </span>
         <div>
-            <%= render partial: "comments/comments", locals: {commentable: @micropospt} %>
+            <%= render partial: "comments/comments", locals: {commentable: @micropost} %>
             <%= render partial: "comments/form", locals: {commentable: @micropost} %>
         </div>
         

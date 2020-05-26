@@ -5,7 +5,7 @@
   <br/>
  
 
-    <div class="col-md-8" style="padding-top: 50px;">
+    <div class="col-md-8" style="margin-top: 50px;">
       <%= render 'shared/secondary_navbar' %>
       
       <%= render 'shared/recent_posts' %>
@@ -19,16 +19,16 @@
           <div class="panel-body">
             <h4 class="session-title"> Recent Members </h4>
 
-            <div style="padding: 15px 15px 15px 15px">
+            <div style="margin: 15px 15px 15px 15px">
               <% @user_ids.each do |user_id| %>
               <% user = User.find_by(id: user_id) %>
-                <div class="col-sm-4">
+                <div class="col-sm-2 col-sm-offset-1" style="margin-right: 10px;">
                 <% if user.avatar? %>
-                  <%= link_to image_tag(user.avatar.url, size: "120"), user %>
+                  <%= link_to image_tag(user.avatar.url, size: 60), user %>
                 <% else %>
-                  <%= link_to gravatar_for(user, size: 120), user %> 
+                  <%= link_to gravatar_for(user, size: 60), user %> 
                 <% end %>
-                  <p style="text-align: center;"><%= link_to user.name, user %></p>
+                  <p><%= link_to user.name, user %></p>
                 </div>
               <% end %>
             </div>
