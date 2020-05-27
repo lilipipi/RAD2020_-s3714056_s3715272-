@@ -1,16 +1,16 @@
 <div class="panel">
 <div class="tab topnav" style="padding-left: 0px;">
     <%= link_to "Recent posts", root_path, class: "tablinks"%>
-    <%= link_to "Selected posts", "", :onclick => "$(filter_form).submit()"%>
+    <%= link_to "Selected posts", root_path, :onclick => "$(filter_form).submit()"%>
     <%= link_to "New Post", new_micropost_path, class: "tablinks newpost", style: "float: right;" %>
     <% if logged_in? %>
     <%= link_to "My Settings", edit_user_path(current_user), class: "tablinks"%>
     <% end %>
     <div class="search-container">
-      <form>
-        <input type="text" placeholder="Search..">
-        <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
-      </form>
+      <%= form_for :static_pages, url: filtercontent_path, :html => {:id => "filter_content_form"} do |f| %>
+        <%= text_field_tag :content %>
+      <% end %>
+      <%= link_to "", root_path, :onclick => "$(filter_content_form).submit()", class: "glyphicon glyphicon-search"%>
     </div>
 </div> 
 </div>

@@ -7,20 +7,28 @@
       <ul role="navigation" class="nav nav-pills nav-stacked" style="max-width: 250px;" id="sidebar">
         <li>
           <%= link_to current_user , class:"nav-link" do %>
-          <span class="glyphicon glyphicon-send" aria-hidden="true"></span> My profile
+            <span><i class="glyphicon glyphicon-send" aria-hidden="true" style="margin-right: 10px;"></i> My profile</span> 
           <% end %>
         </li>
         <li>
-         <%= link_to "My Post", current_user %>
+          <%= link_to current_user , class:"nav-link" do %>
+            <span><i class="glyphicon glyphicon-user" aria-hidden="true" style="margin-right: 10px;"></i> My Posts</span> 
+          <% end %>
         </li>
         <li>
-          <%= link_to "My comments", current_user %>
+          <%= link_to current_user , class:"nav-link" do %>
+            <span><i class="glyphicon glyphicon-comment" aria-hidden="true" style="margin-right: 10px;"></i> My Comments</span> 
+          <% end %>
         </li>
         <li>
-          <a href="#"> <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> <%= link_to "Comments to me", my_comments_path %> </a>
+          <%= link_to my_comments_path , class:"nav-link" do %>
+            <span><i class="glyphicon glyphicon-ok-sign" aria-hidden="true" style="margin-right: 10px;"></i> Comments to me</span> 
+          <% end %>
         </li>
         <li class="active">
-          <a href="#"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> My Setting</a>
+          <%= link_to edit_user_path(current_user), class:"nav-link" do %>
+            <span><i class="glyphicon glyphicon-cog" aria-hidden="true" style="margin-right: 10px;"></i> My Settings</span> 
+          <% end %>
         </li>
       </ul>
     </div>
@@ -42,16 +50,17 @@
               <%= render 'shared/error_messages', object: f.object %>
 
               <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control'%>
+              <%= f.text_field :name, class: "form-control"%>
 
               <%= f.label :email %>
-              <%= f.email_field :email , class: 'form-control' %>
+              <%= f.email_field :email , class: "form-control" %>
 
-              <%= f.label :password %>
-              <%= f.password_field :password, class: 'form-control' %>
+              <%= f.label :phonenumber %> 
+              <%= f.text_field :phonenumber, class:"form-control" %>
 
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation, class: 'form-control' %>
+              <%= f.label :city %> 
+              <%= f.text_field :city, class:"form-control" %>
+
 
               <%= f.submit 'Confirm', class: "btn btn-primary" %>
               <% end %>
@@ -61,52 +70,49 @@
           <div class="tab-pane fade" id="avatar" role="tabpanel">
             <div class="col-md-6" style="margin-top: 20px;">
               <% if @user.avatar? %>
-              <%= image_tag(@user.avatar.url, size: "400") %>
+                <%= image_tag(@user.avatar.url, size: "300") %>
               <% else %>
-              <%= gravatar_for @user %>
+                <%= gravatar_for @user %>
               <% end %>
+
               <%= form_for(@user) do |f| %> 
               <%= render'shared/error_messages'%>
-              <%= f.file_field :avatar %>
+              <div style="margin-top: 20px;">
+                <%= f.file_field :avatar %>
+              </div>
               <%= f.submit "Confirm", class:"btn btn-primary"%>
               <%end%>
-              <a class="btn btn-primary m-2" href="http://gravatar.com/emails">Change</a>
             </div>
           </div>
           <div class="tab-pane fade" id="password" role="password">
             <div class="col-md-6" style="margin-top: 20px;">
               <%= form_for(@user) do |f| %> <%= render'shared/error_messages'%>
-              <%= f.label:password %>
-              <%= f.password_field:password, class:"form-control" %>
-              <%= f.label:password_confirmation, "Confirm Password" %>
-              <%= f.password_field:password_confirmation,class:"form-control" %>
+              <%= f.label :password %>
+              <%= f.password_field :password, class:"form-control" %>
+              <%= f.label :password_confirmation, "Confirm Password" %>
+              <%= f.password_field :password_confirmation,class:"form-control" %>
               <%= f.submit "Confirm", class:"btn btn-primary"%>
               <%end%>
             </div>
           </div>
 
           <div class="tab-pane fade" id="verification" role="tabpanel" aria-labelledby="verify-tab">
-            <div class="col-md-6">
+            <div class="col-md-6" style="margin-top: 20px;">
               <%= image_tag(@user.card.url, size: "400") if @user.card? %>
-              <form>
-                <div class="form-group" style="margin-top: 20px;">
-                  <label for="name">Name on the Card</label>
-                  <input type="name" class="form-control" id="name">
+              <%= form_for(@user) do |f| %> 
+                <%= render'shared/error_messages'%>
+                <div class="form-group">
+                  <%= f.label :card_number %>
+                  <%= f.text_field :card_number, class: 'form-control', id: "number"%>
                 </div>
                 <div class="form-group">
-                  <label for="number">Card Number</label>
-                  <input type="password" class="form-control" id="number">
+                  <%= f.file_field :card %>
                 </div>
-                <div class="form-group">
-                  <label>Example file input</label>
-                  <input type="file">
-                </div>
-            </div>
-            <%= form_for(@user) do |f| %> <%= render'shared/error_messages'%>
-              <% f.file_field :card %>
-              <%= f.submit "Confirm", class:"btn
-                btn-primary"%>
+                <%= f.submit "Confirm", class:"btn btn-primary"%>
               <%end%>
+
+            </div>
+
           </div>
         </div>
       </div>

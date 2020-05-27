@@ -3,7 +3,7 @@ class MicropostsController < ApplicationController
     before_action :correct_user, only: :destroy
 
     
-    $topic = ["topic 1", "topic 2", "topic 3", "topic 4"]
+    
 
     def show
         @micropost = Micropost.find(params[:id])

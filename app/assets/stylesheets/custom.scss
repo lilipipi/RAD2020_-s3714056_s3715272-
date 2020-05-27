@@ -155,7 +155,6 @@ aside {
 }
 
 .gravatar {
-  float:left;
   margin-right:10px;
 }
 
@@ -476,4 +475,8 @@ span.picture {
   background-color: whitesmoke;
   padding: 5px 30px 5px;
   margin-bottom: 0.75rem;
+}
+
+.glyphicon-custom {
+  font-size: 20px;
 }

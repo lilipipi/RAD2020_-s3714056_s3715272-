@@ -5,23 +5,18 @@
 
 
 <%= form_for :static_pages, url: home_path, :html => {:id => "filter_form"} do |f| %>
+
     <div data-toggle="buttons" class="micropost-filter-form" >
-
-        <label class="btn btn-info col-sm-3">
-            <%= check_box_tag "topic[]", "2" %> 2
+        <% $topic.each do |t| %>
+        <label class="btn btn-info col-sm-3" style="margin: 0px 15px 15px 15px;">
+            <%= check_box_tag "topic[]", t %> <%= t %>
         </label>
-
-        <label class="btn btn-info col-sm-3 col-sm-offset-1">
-            <%= check_box_tag "topic[]", "topic" %> topic
-        </label>
-
-        <label class="btn btn-info col-sm-3 col-sm-offset-1">
-            <%= check_box_tag "topic[]", "RMIT" %> RMIT
-        </label>
+        <% end  %>
     </div>
     <div class="row customized-container-search" style="padding-top: 50px">
     </div>
 <% end %>
+
 
 <% if false %>
 <%= simple_form_for :static_pages, url: filter_path do %>

@@ -5,7 +5,7 @@
     <div class ="col-md-2">
     <div class="panel-img" style="margin-left: 20px; margin-top: 20px;">
         <% if post.user.avatar? %>
-        <%= link_to image_tag(post.user.avatar.url), post.user %>
+        <%= link_to image_tag(post.user.avatar.url, size: 70), post.user %>
         <% else %>
         <%= link_to gravatar_for(post.user, size: 70), post.user%> 
         <% end %>

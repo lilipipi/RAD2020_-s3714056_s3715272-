@@ -9,7 +9,7 @@
       <%= render 'shared/secondary_navbar' %>
       
       <%= render 'shared/recent_posts' %>
-      <%= link_to "My Setting", edit_user_path(current_user), class: "btn btn-lg btn-light text-dark" if logged_in?%>
+      
   
   </div>
 
@@ -28,7 +28,7 @@
                 <% else %>
                   <%= link_to gravatar_for(user, size: 60), user %> 
                 <% end %>
-                  <p style="font-size: 12px;"><%= link_to user.name, user %></p>
+                  <p class="text-center" style="font-size: 12px;"><%= link_to user.name, user %></p>
                 </div>
               <% end %>
             </div>
