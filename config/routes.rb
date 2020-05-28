@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
-  
+  get '/filtercontent',    to: 'static_pages#home'
+
   post '/home',    to: 'static_pages#filter'
   post '/filtercontent',    to: 'static_pages#filtercontent'
 
