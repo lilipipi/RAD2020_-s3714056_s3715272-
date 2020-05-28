@@ -21,13 +21,16 @@
         <p class="panel-text">
         <small class="text-muted">  
             Posted <%= time_ago_in_words(post.created_at) %> ago 
-        </small>
+        </small>    
         </p>  
         <p class="card-text"><small class="text-muted"><%= post.topic %></small></p>   
         </div>
         <div class="post-corner" >
+            <small> <i class="glyphicon glyphicon-comment"> </i> <%= post.comments.count %></i></i></small> 
+            <span style="margin-right: 20px;"></span>
             <small> <i class="glyphicon glyphicon-eye-open"> </i> <%= post.view %></i></i></small>
         </div>
+        
        </div>    
     </div>
     </div>      

@@ -12,7 +12,9 @@
       </div>
         <p class="text-center">Name: <%= @user.name %></p>
         <p class="text-muted text-center"><i class="glyphicon glyphicon-time"></i>  <%= current_user.created_at.strftime("%Y-%m-%d")%>
-        <span style="margin-right: 40px;"></span><i class="glyphicon glyphicon-map-marker"></i>  <%= @user.city if @user.city? %></p>
+        <% if @user.city? %>
+          <span style="margin-right: 40px;"></span><i class="glyphicon glyphicon-map-marker"></i>  <%= @user.city? %></p>
+        <% end %>
     </div>
   <div class="row">
     <div class="col-md-6">

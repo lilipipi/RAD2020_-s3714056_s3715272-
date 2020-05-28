@@ -67,6 +67,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def my_posts
+    @user = current_user    
+    @microposts = @user.microposts.paginate(page: params[:page])
+  end
+
   private
     
     def user_params

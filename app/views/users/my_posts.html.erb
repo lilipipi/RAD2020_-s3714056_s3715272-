@@ -1,0 +1,44 @@
+<% provide(:title, @user.name) %>
+<div>
+    <div class="col-md-12", style="margin-top: 50px;">
+    <!-- <%= gravatar_for @user%>  -->
+      <div class="row text-center">
+        <% if current_user.avatar? %>
+          <%= image_tag(current_user.avatar.url, size: 150, class:"rounded mx-auto d-block") %>
+        <% else %>
+          <%= gravatar_for(current_user, size: 150)%>
+        <% end %>
+      </p>
+      </div>
+        <p class="text-center">Name: <%= @user.name %></p>
+        <p class="text-muted text-center"><i class="glyphicon glyphicon-time"></i>  <%= current_user.created_at.strftime("%Y-%m-%d")%>
+        <% if @user.city? %>
+          <span style="margin-right: 40px;"></span><i class="glyphicon glyphicon-map-marker"></i>  <%= @user.city? %></p>
+        <% end %>
+    </div>
+  <div class="row" style="margin-bottom: 30px;">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h6>My Posts</h6>
+        </div>
+        <div class="panel-body">
+          <% if @microposts.any? %>
+          <% @microposts.each do |micropost| %>
+            <div>
+              <p class="panel-text"><%= link_to micropost.user.name, micropost %> posted <%= link_to micropost.title, micropost %> 
+              <span><small class="text-muted">at <%= micropost.created_at %></small></span>:</p>
+              <p class="panel-text" style="margin-left: 30px;"><%= micropost.content %></p>
+            </div>
+            <br>
+            <hr/>
+            <%= render partial: "users/comments_on_my_posts", locals: {micropost: micropost}%>
+          <% end %>
+          <% else %>
+          <p class="panel-text">User has no posts</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
