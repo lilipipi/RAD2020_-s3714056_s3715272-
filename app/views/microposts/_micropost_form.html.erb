@@ -1,3 +1,5 @@
+  <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>  
+
   <%= simple_form_for @micropost do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
     <div> 
@@ -14,8 +16,12 @@
         
         <div class="form-group">
           <label>Post content</label>
-          <%= f.text_area :content, class: "form-control custom-micropost-form", placeholder: "Enter your post here ..."  %>        
+          <%= f.text_area :content, class: "form-control custom-micropost-form", placeholder: "Enter your post here ...", name: "micropost[content]"  %>        
         </div>
+ 
+        <script>   
+        CKEDITOR.replace('micropost[content]');
+        </script> 
 
         <div>
           <%= f.button :submit, 'Create new post', class: "btn btn-primary col-md-2" %>

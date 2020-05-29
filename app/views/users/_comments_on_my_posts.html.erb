@@ -1,8 +1,8 @@
 <% if micropost.comments.any? %>
 <% micropost.comments.each do |comment| %>
-  <div class="well">
+  <div class="well" style="margin-left: 30px;">
     <p style="font-size: 12px;"><%= link_to User.find(comment.user_id).name, User.find(comment.user_id) %> commented at <span style="text-muted"><%= comment.created_at %>: </p>
-    <p style="margin-left: 30px;"><%= comment.body %><p>
+    <%= raw comment.body %>
   </div>
 <% end %>
 <br/><hr/>

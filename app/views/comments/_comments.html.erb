@@ -1,6 +1,6 @@
 <h3>Comments</h3>
     <% @micropost.comments.each do |comment| %>
     <div class="well">
-        <%= comment.body %>
+        <%= raw comment.body %>
     </div>
 <% end %>

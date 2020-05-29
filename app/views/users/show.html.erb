@@ -33,9 +33,11 @@
           <% @comments.each do |comment| %>
           <div>
             <p class="panel-text">
-              <%= comment.body %> <span style="float:right;">in Post: <%= link_to Micropost.find(comment.micropost_id).title, Micropost.find(comment.micropost_id) %> 
+              <p><%= raw comment.body %></p>
+              <span style="float:right;">in Post: <%= link_to Micropost.find(comment.micropost_id).title, Micropost.find(comment.micropost_id) %> 
               by <%= link_to User.find(Micropost.find(comment.micropost_id).user_id).name, User.find(Micropost.find(comment.micropost_id).user_id) %></span>
             </p>
+            <br/>
             <p style="float: right;"><small class="text-muted">Written at: <%= comment.created_at %></small></p>
             <br/><hr/>
           </div>

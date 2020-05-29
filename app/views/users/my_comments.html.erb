@@ -16,7 +16,7 @@
               by <%= link_to User.find(Micropost.find(comment.micropost_id).user_id).name, User.find(Micropost.find(comment.micropost_id).user_id) %></span>
             </p>
             <p style="margin-left: 30px;">
-              <%= comment.body %> 
+              <%= raw comment.body %> 
             </p>
             <p style="float: right;"><small class="text-muted">Written at: <%= comment.created_at %></small></p>
             <br/><hr/>

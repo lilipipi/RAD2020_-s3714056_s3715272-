@@ -23,7 +23,7 @@
 
         <span class="title"> <%= @micropost.title%></span>
         <span class="content">
-            <%= @micropost.content %>
+            <%= raw @micropost.content %>
             
         </span>
         <span class="user"><%= link_to @micropost.user.name, @micropost.user %></span>        

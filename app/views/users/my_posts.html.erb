@@ -13,7 +13,7 @@
             <div>
               <p class="panel-text"><%= link_to micropost.user.name, micropost %> posted <%= link_to micropost.title, micropost %> 
               <span><small class="text-muted">at <%= micropost.created_at %></small></span>:</p>
-              <p class="panel-text" style="margin-left: 30px;"><%= micropost.content %></p>
+              <p class="panel-text"><%= raw micropost.content %></p>
             </div>
             <br>
             <hr/>
