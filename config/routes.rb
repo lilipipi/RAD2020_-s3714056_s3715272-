@@ -17,13 +17,16 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
 
+  get '/microposts', to: 'microposts#new'
+  post '/microposts', to: 'microposts#create'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/microposts', to: 'static_pages#home'
   get '/my_comments', to: 'users#my_comments'
   get '/my_posts', to: 'users#my_posts'
+  get '/comments', to: 'users#comments'
   
   
   resources :users do

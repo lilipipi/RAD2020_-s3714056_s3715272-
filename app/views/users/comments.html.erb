@@ -1,29 +1,7 @@
 <% provide(:title, @user.name) %>
 <div>
-  <%= render 'users/user_info' %>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h6>My Posts</h6>
-        </div>
-        <div class="panel-body">
-          <% if @microposts.any? %>
-          <% @microposts.each do |post| %>
-            <div>
-              <p class="panel-text"><%= link_to post.title, post %></p>
-              <p style="float: right;"><small class="text-muted"><%= post.created_at %></small></p>
-            </div>
-            <br>
-            <hr/>
-          <% end %>
-          <% else %>
-          <p class="panel-text">User has no posts</p>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
+    <%= render 'users/user_info' %>
+    <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h6>My Comments</h6>

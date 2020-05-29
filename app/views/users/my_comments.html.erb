@@ -1,44 +1,34 @@
-<% provide(:title, "Comments to User") %>
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-4 ">
-            <img style="margin: 60px;"><%= gravatar_for current_user %> </img>
-            <p style="margin-left: 150px; margin-top: 25px;"><%= current_user.name %></p>
-            <div class="row">
-                <p style="margin-left:30px;"> Joined at: <%= current_user.created_at %></p>
-                <p class="ml-5 mb-4"><i class="fa fa-map-marker"></i> Melbourne</p>
-                
-            </div>
+<% provide(:title, @user.name) %>
+<div>
+    <%= render 'users/user_info' %>
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h6>Comments to me</h6>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <h6>Comments to me</h6>
-                </div>
-                <div class="card-body">
-                    <% if @my_comments.any? %>
-                    <% @my_comments.each do |comment| %>
-                    <p class="card-text">
-                        <% if User.find(comment.user_id).avatar? %>
-                        <%= link_to image_tag(User.find(comment.user_id).avatar.url), User.find(comment.user_id) %>
-                        <% else %>
-                        <%= link_to gravatar_for(User.find(comment.user_id), size: 50), User.find(comment.user_id) %>
-                        <%end%>
-                        
-                        <%= User.find(comment.user_id).name %> :
-                        <%= comment.body %>
-                        <br>
-                        <span><%= comment.created_at %></span>
-                    </p>
-                    <% end %>
-                    <% else %>
-                    <p class="card-text">There is no comments from <%= current_user.name %></p>
-                    <% end %>
+        <div class="panel-body">
+          <% if @my_comments.any? %>
+          <% @my_comments.each do |comment| %>
+          <div>
+            <p class="panel-text">
+              <%= link_to User.find(comment.user_id).name, User.find(comment.user_id) %> commented:
+              <span style="float:right;">in Post: <%= link_to Micropost.find(comment.micropost_id).title, Micropost.find(comment.micropost_id) %> 
+              by <%= link_to User.find(Micropost.find(comment.micropost_id).user_id).name, User.find(Micropost.find(comment.micropost_id).user_id) %></span>
+            </p>
+            <p style="margin-left: 30px;">
+              <%= comment.body %> 
+            </p>
+            <p style="float: right;"><small class="text-muted">Written at: <%= comment.created_at %></small></p>
+            <br/><hr/>
+          </div>
+          <% end %>
 
-                </div>
-            </div>
+          <% else %>
+          <p class="panel-text">User has no comments</p>
+          <% end %>
+          
         </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -50,6 +50,7 @@ class UsersController < ApplicationController
   end
 
   def my_comments
+    @user = current_user
     @posts = current_user.microposts
     @my_comments = []
 
@@ -70,6 +71,11 @@ class UsersController < ApplicationController
   def my_posts
     @user = current_user    
     @microposts = @user.microposts.paginate(page: params[:page])
+  end
+
+  def comments
+    @user = current_user
+    @comments = Comment.where(user_id: @user.id)
   end
 
   private
