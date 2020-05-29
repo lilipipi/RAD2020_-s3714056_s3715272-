@@ -26,6 +26,17 @@ class StaticPagesController < ApplicationController
     render 'static_pages/home'
   end
 
+  def filtercontent
+    @user_ids = Micropost.order('created_at DESC').pluck(:user_id).uniq
+    @most_viewed_posts = Micropost.order('view DESC').take(5)
+    if (params[:content].nil?)
+      @recent_posts = Micropost.where(created_at: (Time.now.midnight - 30.day)..(Time.now.midnight + 1.day)).order('created_at DESC').paginate(page: params[:page])
+    else
+      @recent_posts = Micropost.where("content LIKE ?", "%" + params[:content] + "%").order('created_at DESC').paginate(page: params[:page])
+    end
+    render 'static_pages/home'
+  end
+
   def help
   end
 
