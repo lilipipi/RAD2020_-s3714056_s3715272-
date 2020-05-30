@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
 
   $topic = ["topic 1", "topic 2", "topic 3", "topic 4", "topic 5"]
+  $most_popular_topics = Micropost.group(:topic).order('sum_view DESC').sum(:view).take(2)
 
   
   private

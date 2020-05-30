@@ -1,0 +1,66 @@
+    <div class="col-md-4" style="margin-top: 50px;">
+      <div class="side-bar">
+        <div class="panel">
+          <div class="panel-body">
+            <h4 class="session-title"> Recent Members </h4>
+
+            <div style="margin: 15px 15px 15px 15px">
+              <% @user_ids.each do |user_id| %>
+              <% user = User.find_by(id: user_id) %>
+                <div class="col-sm-2 col-sm-offset-1" style="margin-right: 10px;">
+                <% if user.avatar? %>
+                  <%= link_to image_tag(user.avatar.url, size: 60), user %>
+                <% else %>
+                  <%= link_to gravatar_for(user, size: 60), user %> 
+                <% end %>
+                  <p class="text-center" style="font-size: 12px;"><%= link_to user.name, user %></p>
+                </div>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+
+        <br/>
+        <div class="panel">
+          <div class="panel-body">
+            <h4 class="session-title"> Topic </h4>
+
+            <div style="padding: 15px 15px 15px 15px">
+              <%= render 'shared/micropost_filter_form' %>
+            </div>
+            
+          </div>
+        </div>
+
+        <br/>
+
+        <div class="card">
+          <div class="card-body">
+            <h4 class="session-title"> Post </h4>
+
+            <div style="padding: 15px 15px 15px 15px">
+              <%= render 'shared/most_viewed_posts' %>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h4 class="session-title"> External Links </h4>
+            <p> <%= @test %> </p>
+
+            <div style="padding: 15px 15px 15px 15px">
+              <%= render 'shared/external_links' %>
+              
+            </div>
+            
+          </div>
+        </div>
+
+        <div style="margin-bottom: 50px;">
+        </div>
+
+      </div>
+    </div>

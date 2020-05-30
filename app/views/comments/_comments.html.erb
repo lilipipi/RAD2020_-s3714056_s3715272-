@@ -1,6 +1,9 @@
 <h3>Comments</h3>
     <% @micropost.comments.each do |comment| %>
     <div class="well">
+        <p style="font-size:14px;">Commented by <%= link_to User.find(comment.user_id).name, User.find(comment.user_id)%> at:
+            <span class="text-muted"><small><%= comment.created_at %></small></span>
+        </p>
         <%= raw comment.body %>
     </div>
 <% end %>

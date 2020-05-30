@@ -11,6 +11,8 @@ class MicropostsController < ApplicationController
         @views = @micropost.view
         @views +=1
         @micropost.update(view: @views)
+        @user_ids = Micropost.order('created_at DESC').pluck(:user_id).uniq
+        @most_viewed_posts = Micropost.order('view DESC').take(5)
     end
 
     def new        

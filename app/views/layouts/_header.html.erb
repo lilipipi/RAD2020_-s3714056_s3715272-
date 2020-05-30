@@ -3,13 +3,21 @@
     <%= link_to "Ruby App", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav" style="margin-left: 30%;">
-        <li><%= link_to "Home",   root_path %></li>
+        <li><%= link_to "Home", root_path %></li>
+      </ul>
 
         <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
+        <ul class="nav navbar-nav">
           <li><%= link_to current_user.name, current_user %></li>
+          <li class="dropdown">
+            <a class="navbar-gravatar" data-toggle="dropdown">News</a>
+            <ul class="dropdown-menu">
+              <% $most_popular_topics.each do |t| %>
+                <li><%= link_to t[0], {controller: 'static_pages', action:'filter', topic: t[0]}, method: :post %></li>
+              <% end %>
+            </ul>
+          </li>
         </ul>
-
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a class="navbar-gravatar" data-toggle="dropdown">

@@ -17,6 +17,11 @@
             </p>
             <br/>
             <p style="float: right;"><small class="text-muted">Written at: <%= comment.created_at %></small></p>
+            <br/>
+            <br/> 
+            <p style="float: right;"><small class="text-muted">
+              <%= link_to "delete this comment?", comment, method: :delete, data: { confirm: "You sure?"} %> 
+            </small></p>
             <br/><hr/>
           </div>
           <% end %>
