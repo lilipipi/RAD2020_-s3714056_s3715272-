@@ -1,25 +1,18 @@
 ## Building the rails App
 
-1. Run `docker-compose build` after every Gemfile change or to build the containers
+### Team members:
+1. Tran Gia Hung - s3715272
+2. Zhang Junhao - s3714056
 
-## Running the rails App
-1. Run `docker-compose up` to run the rails app
-2. hit `http://0.0.0.0:3000`
+### Highest level attempted: finish 90+
 
-## Debugging the Rails App
+### Timesheet logs:
+Tran Gia Hung:
+![hung_timesheet](./images/hung_timesheet.png)
 
-1. Add `binding.pry` or `byebug` in your code where you want to put the breakpoint.
-2. Run `docker-compose run --service-port --rm web` in your console to run the rails app in Debug mode
-3. Access the endpoint you are debugging to go into debugging mode in pry or byebug
+Zhang Junhao:
+![jh_timeseet](./images/jh_timesheet.png)
 
-## Rails CHEATSHEET using docker
+### Heroku url: https://fierce-springs-53325.herokuapp.com/
 
-1. `docker-compose run --rm web rails new . --force --no-deps --database=postgresql`
-2. `docker-compose run --rm web bundle install`
-3. `docker-compose run --rm web bundle update`
-4. `docker-compose run --rm web rails db:create`
-5. `docker-compose run --rm web rails db:migrate`
-6. `docker-compose run --rm web rails db:drop`
-7. `docker-compose run --rm web rails assets:precompile`
-8. `docker-compose run --rm web rails console`
-9. `docker-compose run --rm web rails test`
+### Git repo:  lilipipi/RAD2020_-s3714056_s3715272- 
