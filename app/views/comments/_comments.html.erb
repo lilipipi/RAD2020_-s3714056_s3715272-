@@ -1,9 +1,33 @@
 <h3>Comments</h3>
     <% @micropost.comments.each do |comment| %>
-    <div class="well">
-        <p style="font-size:14px;">Commented by <%= link_to User.find(comment.user_id).name, User.find(comment.user_id)%> at:
-            <span class="text-muted"><small><%= comment.created_at %></small></span>
-        </p>
-        <%= raw comment.body %>
-    </div>
-<% end %>
+        <div class="panel">
+            <div class="panel-body">
+                <p style="font-size:14px;"><%= link_to User.find(comment.user_id).name, User.find(comment.user_id)%> at:
+                    <span class="text-muted"><small><%= comment.created_at %></small></span>
+                    <span style="float: right;"><small><button class="glyphicon glyphicon-comment" onclick="toggleForm(<%= comment.id %>)"></button></small></span>
+                </p>
+                <%= raw comment.body %>
+                <hr/>
+                <% comment.comments.each do |cfc| %>
+                    <p style="font-size:14px; margin-left: 30px;"><%= link_to User.find(cfc.user_id).name, User.find(cfc.user_id)%> at:
+                        <span class="text-muted"><small><%= cfc.created_at %></small></span>
+                    </p>
+                    <p style="margin-left: 30px;"><%= raw cfc.body %></p>
+                    <hr/>
+                <% end %>
+                <%= render partial: "comments/comments_for_comments", locals: {commentable: comment} %>
+            </div>
+        </div>
+    <% end %>
+
+<script>
+    function toggleForm(comment_id) {
+        var id = "comments_for_comments_form" + comment_id
+        var element = document.getElementById(id)
+        if (element.style.display == "block") {
+            element.style.display = "none";
+        } else {
+            element.style.display = "block";
+        }
+    }
+</script>

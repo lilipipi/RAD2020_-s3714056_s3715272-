@@ -5,10 +5,15 @@ class CommentsController < ApplicationController
     def create
         @comment = @commentable.comments.new(comment_params)
         @comment.user_id = current_user.id
-        @comment.micropost_id = @commentable.id
+        if @comment.commentable_type == "Comment"
+            @comment.micropost_id = @commentable.micropost_id
+            @comment.comment_id = @commentable.id
+        else
+            @comment.micropost_id = @commentable.id
+        end
         @comment.save
-        flash[:success] = "Your comment was successfully created"
-        redirect_to @commentable
+        flash[:success] = "Comment created"
+        redirect_to Micropost.find(@comment.micropost_id)
     end
 
     def destroy

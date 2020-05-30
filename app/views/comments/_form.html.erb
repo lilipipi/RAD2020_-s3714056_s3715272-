@@ -1,9 +1,6 @@
 <%= form_for [commentable, Comment.new] do |f| %>
     <div class="form-group">
-        <%= f.text_area :body, class: "form-control", placeholder: "Add a comment" %>
-        <script>   
-          CKEDITOR.replace('comment[body]');
-        </script> 
+        <%= f.text_area :body, class: "form-control", placeholder: "Add a comment", id: "postcomment" %>
     </div>
     <%= f.submit class: "btn btn-primary" %>
 <% end %>

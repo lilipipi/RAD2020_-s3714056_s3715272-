@@ -1,0 +1,6 @@
+<%= form_for [commentable, Comment.new], html: {class:"form-popup", id: "comments_for_comments_form#{commentable.id}"} do |f| %>
+    <div class="form-group">
+        <%= f.text_area :body, class: "form-control", placeholder: "Add a comment" %>
+    </div>
+        <%= f.submit class: "btn btn-primary" %>
+<% end %>

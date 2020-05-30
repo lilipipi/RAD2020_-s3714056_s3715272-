@@ -32,11 +32,18 @@ Rails.application.routes.draw do
   resources :users do
     resources :comments, module: :users
   end
+
   resources :microposts, only: [:create, :destroy, :show, :new]
   resources :microposts do
     resources :comments, module: :microposts
   end
-  resources :comments 
+  
+  resources :comments
+  resources :comments do
+    resources :comments, module: :comments
+  end
+
+
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
